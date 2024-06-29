@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "IBCC-MEMBERSHIP-APP",
+    "slug": "IBCC-MEMBERSHIP-APP",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f15d2951-bd2e-45d7-a099-d283f5657072"
+      }
+    },
+    "owner": "davidlmp"
+  }
+}
