@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { Text, Card, Button, Icon, SearchBar } from "@rneui/themed";
-import { seed } from "./testSeed";
+import { seed } from "./TestSeed";
 
 const DirectoryScreen = ({ navigation }) => {
   const [users, setUsers] = useState(seed.results);
