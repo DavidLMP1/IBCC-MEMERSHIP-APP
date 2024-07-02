@@ -1,14 +1,16 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
+import { Image } from "react-native-elements";
 import { styles } from "./DashboardScreen.styles";
 
 const DashboardScreen = ({ navigation }) => {
   return (
-   <View>
-    <Text>
-      Hello world!
-    </Text>
-   </View>
+    <View style={styles.content}>
+      <Image
+        source={require("../../assets/img/logoIbcc.png")}
+        style={styles.image}
+      />
+    </View>
   );
 };
 

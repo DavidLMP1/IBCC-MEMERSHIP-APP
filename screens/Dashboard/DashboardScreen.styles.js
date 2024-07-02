@@ -5,26 +5,16 @@ const windowHeight = Dimensions.get("window").height;
 
 export const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    paddingTop: windowHeight * 0.22,
+    flex: 1,    
     alignItems: "center",
     backgroundColor: "#FFF",
-    paddingVertical: 30,
-    paddingHorizontal: 40,
   },
 
-  subContent: {
-    marginBottom: 15,
+  image: {
+    resizeMode: "contain",
+    width: 200,
+    height: 200,
+    // marginTop: 20,
   },
-
-  title: {
-    fontSize: 15,
-    fontWeight: "bold",
-    marginBottom: 15,
-  },
-  subtittle: {
-    fontSize: 13,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  text: {},
 });

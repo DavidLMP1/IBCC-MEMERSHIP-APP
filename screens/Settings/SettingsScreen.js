@@ -1,11 +1,13 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, ScrollView } from "react-native";
+import SettingsForm from "../../components/SettingsForm/SettingsForm";
+import { styles } from "./SettingsScreen.styles";
 
 const SettingsScreen = ({ navigation }) => {
   return (
-    <View>
-      <Text>SettingsScreen</Text>
-    </View>
+    <ScrollView style={styles.content}>
+      <SettingsForm />
+    </ScrollView>
   );
 };
 

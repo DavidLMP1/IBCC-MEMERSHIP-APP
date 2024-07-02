@@ -1,10 +1,12 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from "react";
+import { View, Text, ScrollView } from "react-native";
+import { styles } from "./PrayerRequest.styles";
+import PrayerRequestForm from "../../components/PrayerRequestForm/PrayerRequestForm";
 
 export default function PrayerRequest() {
   return (
-    <View>
-      <Text>prayerRequest</Text>
-    </View>
-  )
+    <ScrollView style={styles.content}>
+      <PrayerRequestForm />
+    </ScrollView>
+  );
 }
