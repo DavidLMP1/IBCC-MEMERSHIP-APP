@@ -21,8 +21,8 @@ export function HomeScreen({ navigation }) {
         source={require("../../assets/img/logoIbcc.png")}
         style={styles.image}
       />
-      <Text style={styles.tittle}>Members Directory</Text>
-      <Text style={styles.tittle2}>2024</Text>
+      {/* <Text style={styles.tittle}>Members Directory</Text>
+      <Text style={styles.tittle2}>2024</Text> */}
       <Button
         title="Go to Login"
         containerStyle={styles.btnContainer}

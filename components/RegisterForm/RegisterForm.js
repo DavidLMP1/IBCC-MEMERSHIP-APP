@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
 import { View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -17,11 +17,13 @@ export default function RegisterForm() {
 
   const formik = useFormik({
     initialValues: initialValues(),
+    enableReinitialize: true,
     validateOnChange: false,
     validationSchema: validationSchema(),
     onSubmit: async (formValue) => {
       try {
-        console.log(formValue);
+        console.log("form", formValue);
+        formik.resetForm();
       } catch (error) {
         alert(error);
       }
@@ -41,41 +43,56 @@ export default function RegisterForm() {
           placeholder="Nombres"
           containerStyle={styles.input}
           onChangeText={(text) => formik.setFieldValue("first_name", text)}
-          errorMessage={formik.errors.email}
+          errorMessage={formik.errors.first_name}
+          value={formik.values.first_name}
         />
         <Input
           placeholder="Apellidos"
           containerStyle={styles.input}
           onChangeText={(text) => formik.setFieldValue("last_name", text)}
-          errorMessage={formik.errors.email}
+          errorMessage={formik.errors.last_name}
+          value={formik.values.last_name}
         />
         <Input
           placeholder="Correo electronico"
           containerStyle={styles.input}
           onChangeText={(text) => formik.setFieldValue("email", text)}
           errorMessage={formik.errors.email}
+          value={formik.values.email}
         />
         <Input
           placeholder="Fecha de cumpleaños"
           containerStyle={styles.input}
           onChangeText={(text) => formik.setFieldValue("birthday", text)}
-          errorMessage={formik.errors.email}
+          errorMessage={formik.errors.birthday}
+          value={formik.values.birthday}
         />
         <Input
           placeholder="Telefono"
           containerStyle={styles.input}
           onChangeText={(text) => formik.setFieldValue("phone", text)}
-          errorMessage={formik.errors.email}
+          errorMessage={formik.errors.phone}
+          value={formik.values.phone}
         />
         <Input
           placeholder="Contraseña"
           containerStyle={styles.input}
+          rightIcon={
+            <Icon
+              type="material-community"
+              name={showPassword ? "eye-off-outline" : "eye-outline"}
+              iconStyle={styles.icon}
+              onPress={hiddenPassword}
+            />
+          }
           secureTextEntry={showPassword ? false : true}
           onChangeText={(text) => formik.setFieldValue("password", text)}
           errorMessage={formik.errors.password}
+          value={formik.values.password}
         />
         <Input
           placeholder="Direccion"
+          containerStyle={styles.input}
           rightIcon={{
             type: "material-community",
             name: "map-marker-radius",
@@ -83,7 +100,8 @@ export default function RegisterForm() {
             onPress: onOpenCloseMap,
           }}
           onChangeText={(text) => formik.setFieldValue("address", text)}
-          errorMessage={formik.errors.address}
+          errorMessage={formik.errors.location}
+          value={formik.values.location}
         />
         <Button
           title="Enviar"
@@ -102,7 +120,7 @@ export default function RegisterForm() {
 const getColorIconMap = (formik) => {
   if (formik.errors.location) return "#ff0000";
 
-  if (formik.values.location) return "darkred";
+  if (formik.values.location) return "green";
 
   return "#c2c2c2";
 };

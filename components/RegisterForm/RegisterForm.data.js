@@ -10,6 +10,7 @@ export function initialValues() {
     phone: "",
     gender: "",
     civil_status: "",
+    location: "",
   };
 }
 
@@ -23,10 +24,10 @@ export function validationSchema() {
     password: Yup.string().required("Este campo es necesario"),
     birthday: Yup.string().required("Este campo es necesario"),
     phone: Yup.string().required("Este campo es necesario"),
-    gender: Yup.string().required("Este campo es necesario"),
-    civil_status: Yup.string().required("Este campo es necesario"),
+    // gender: Yup.string().required("Este campo es necesario"),
+    // civil_status: Yup.string().required("Este campo es necesario"),
+    location: Yup.object().required("Este campo es necesario"),
     // photo: Yup.string().required("Este campo es necesario"),
-    // location: Yup.string().required("Este campo es necesario"),
     // role: Yup.string().required("Este campo es necesario"),
   });
 }

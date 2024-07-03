@@ -17,31 +17,30 @@ export function MapForm(props) {
     longitudeDelta: 0.0015996024012565613,
   });
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
+  // useEffect(() => {
+  //   (async () => {
+  //     const { status } = await Location.requestForegroundPermissionsAsync();
 
-      if (status !== "granted") {
-        Toast.show({
-          type: "info",
-          position: "bottom",
-          text1: "Es necesario autorizar la localizacion en ajustes",
-        });
-        return;
-      }
-      const locationTemp = await Location.getCurrentPositionAsync({});
+  //     if (status !== "granted") {
+  //       Toast.show({
+  //         type: "info",
+  //         position: "bottom",
+  //         text1: "Es necesario autorizar la localizacion en ajustes",
+  //       });
+  //       return;
+  //     }
+  //     const locationTemp = await Location.getCurrentPositionAsync({});
 
-      setLocation({
-        latitude: locationTemp.coords.latitude,
-        longitude: locationTemp.coords.longitude,
-        latitudeDelta: 0.0013973053043212502,
-        longitudeDelta: 0.0015996024012565613,
-      });
-    })();
-  }, []);
+  //     setLocation({
+  //       latitude: locationTemp.coords.latitude,
+  //       longitude: locationTemp.coords.longitude,
+  //       latitudeDelta: 0.0013973053043212502,
+  //       longitudeDelta: 0.0015996024012565613,
+  //     });
+  //   })();
+  // }, []);
 
   const saveLocation = () => {
-    console.log("location saved", location);
     formik.setFieldValue("location", location);
 
     close();
