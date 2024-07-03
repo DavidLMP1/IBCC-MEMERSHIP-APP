@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { styles } from "./PrayerRequestScreen.styles";
-import PrayerRequestForm from "../../components/PrayerRequestForm/PrayerRequestForm";
+import PrayerRequestForm from "../../components/Forms/PrayerRequestForm/PrayerRequestForm";
 
 export default function PrayerRequest() {
   return (
