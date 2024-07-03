@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { Text, Card, Button, Icon, SearchBar } from "@rneui/themed";
-import { seed } from "./TestSeed";
+import { seed } from "../../components/Seed/TestSeed";
 
 const DirectoryScreen = ({ navigation }) => {
   const [users, setUsers] = useState(seed.results);
   const [filterUsers, setFilterUsers] = useState(seed.results);
   const [search, setSearch] = useState("");
-
 
   const getUsers = async () => {
     try {

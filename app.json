@@ -4,10 +4,10 @@
     "slug": "ibbc-membership",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/logoIbcc.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/img/logoIbcc.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,13 +16,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/img/logoIbcc.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.davidlmp.ibbcmembership"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/img/logoIbcc.png"
     },
     "extra": {
       "eas": {

@@ -6,8 +6,9 @@ import SettingsScreen from "../screens/Settings/SettingsScreen";
 import DashboardScreen from "../screens/Dashboard/DashboardScreen";
 import DirectoryScreen from "../screens/Directory/DirectoryScreen";
 import CalendarScreen from "../screens/Calendar/CalendarScreen";
-import PrayerRequest from "../screens/Prayers/PrayerRequest";
-import AboutUs from "../screens/About/AboutUs";
+import PrayerRequestScreen from "../screens/Prayers/PrayerRequestScreen";
+import AboutUsScreen from "../screens/About/AboutUsScreen";
+import RegisterScreen from "../screens/Register/RegisterScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -25,8 +26,9 @@ export default function MainStack() {
         <Drawer.Screen name="Settings" component={SettingsScreen} />
         <Drawer.Screen name="Directory" component={DirectoryScreen} />
         <Drawer.Screen name="Calendar" component={CalendarScreen} />
-        <Drawer.Screen name="Prayer Requests" component={PrayerRequest} />
-        <Drawer.Screen name="About Us" component={AboutUs} />
+        <Drawer.Screen name="Prayer Requests" component={PrayerRequestScreen} />
+        <Drawer.Screen name="About Us" component={AboutUsScreen} />
+        <Drawer.Screen name="Register" component={RegisterScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
