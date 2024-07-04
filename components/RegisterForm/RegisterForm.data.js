@@ -8,8 +8,8 @@ export function initialValues() {
     password: "",
     birthday: "",
     phone: "",
-    gender: "",
-    civil_status: "",
+    // gender: "",
+    // civil_status: "",
     location: "",
   };
 }

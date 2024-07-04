@@ -11,9 +11,9 @@ export function LoginScreen({navigation}) {
         source={require("../../assets/img/logoIbcc.png")}
         style={styles.image}
       />
-      <View style={styles.subtitle}>
+      {/* <View style={styles.subtitle}>
         <Text style={styles.tittle}>Members Directory 2024</Text>
-      </View>
+      </View> */}
       <LoginForm />
     </ScrollView>
   );

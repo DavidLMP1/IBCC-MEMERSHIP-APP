@@ -5,8 +5,8 @@ import { styles } from "./RegisterScreen.styles";
 
 export default function RegisterScreen() {
   return (
-    <ScrollView style={styles.content}>
+    <View style={styles.content}>
       <RegisterForm />
-    </ScrollView>
+    </View>
   );
 }

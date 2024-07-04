@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   input: {
-    marginTop: 20,
+    marginTop: 10,
   },
   textArea: {
     height: 100,
@@ -16,16 +16,27 @@ export const styles = StyleSheet.create({
   btnContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 5,
     width: "95%",
   },
   btn: {
     backgroundColor: "#173B46",
     width: 200,
     height: 50,
-    borderRadius: 50, 
+    borderRadius: 50,
   },
   titleBtn: {
-    color: "#fff"
+    color: "#fff",
+  },
+  containerImage: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  imageAvatar: {
+    width: 120,
+    height: 120,
+    borderWidth: 1,
+    borderColor: "#000"
   },
 });

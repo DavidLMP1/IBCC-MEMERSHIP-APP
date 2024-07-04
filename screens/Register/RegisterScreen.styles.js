@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: "#fff",
-    paddingTop: windowHeight * 0.05,
+    // paddingTop: windowHeight * 0.05,
   },
   textRegister: {
     marginHorizontal: 10,

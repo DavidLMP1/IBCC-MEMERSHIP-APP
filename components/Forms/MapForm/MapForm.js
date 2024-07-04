@@ -40,7 +40,7 @@ export function MapForm(props) {
   //   })();
   // }, []);
 
-  const saveLocation = () => {
+  const saveLocation = (e) => {
     formik.setFieldValue("location", location);
 
     close();
