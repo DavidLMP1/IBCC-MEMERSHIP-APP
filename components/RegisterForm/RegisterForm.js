@@ -57,7 +57,7 @@ export default function RegisterForm() {
     validationSchema: validationSchema(),
     onSubmit: async (formValue) => {
       try {
-        console.log("form", formValue);
+        // console.log("form", formValue);
         // formik.resetForm();
         await register(formValue);
       } catch (error) {
