@@ -9,6 +9,9 @@ import CalendarScreen from "../screens/Calendar/CalendarScreen";
 import PrayerRequestScreen from "../screens/Prayers/PrayerRequestScreen";
 import AboutUsScreen from "../screens/About/AboutUsScreen";
 import RegisterScreen from "../screens/Register/RegisterScreen";
+import UploadAudio from "../screens/Audio/UploadAudioScreen";
+import AudioList from "../screens/AudioList/AudioListScreen";
+import AudioPlayer from "../screens/AudioPlayer/AudioPlayerScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -29,6 +32,9 @@ export default function MainStack() {
         <Drawer.Screen name="Prayer Requests" component={PrayerRequestScreen} />
         <Drawer.Screen name="About Us" component={AboutUsScreen} />
         <Drawer.Screen name="Register" component={RegisterScreen} />
+        <Drawer.Screen name="Audio" component={UploadAudio} />
+        <Drawer.Screen name="AudioList" component={AudioList} />
+        <Drawer.Screen name="AudioPlayer" component={AudioPlayer} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

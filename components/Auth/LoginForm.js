@@ -18,23 +18,6 @@ export function LoginForm() {
 
   const apiRoute = `${apiUrl}/auth/login`;
 
-  // const login = async (data) => {
-  //   try {
-  //     const response = await fetch(apiRoute, {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     return response;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }; 
-
   const login = async (data) => {
     console.log(data);
     try {
@@ -113,10 +96,10 @@ export function LoginForm() {
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         titleStyle={styles.titleBtn}
-        onPress={() => {
-          navigation.navigate("Stack");
-        }}
-        // onPress={formik.handleSubmit}
+        // onPress={() => {
+        //   navigation.navigate("Stack");
+        // }}
+        onPress={formik.handleSubmit}
         loading={formik.isSubmitting}
       />
     </View>

@@ -3,6 +3,7 @@ import { View, Text, Button } from "react-native";
 import { Calendar, CalendarList, Agenda } from "react-native-calendars";
 import { apiUrl } from "../../enviroment";
 import { Modal } from "../../components/Shared";
+import { getUsuario } from "../../storage/UserAsyncStorage";
 
 export default function CalendarScreen() {
   const apiRoute = `${apiUrl}/users`;
@@ -10,14 +11,16 @@ export default function CalendarScreen() {
   const [birthdays, setBirthdays] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [usersToShow, setUsersToShow] = useState([]);
+  const [userInfo, setUserInfo] = useState(null);
 
-  const getUsers = async () => {
+  const getUsers = async (token) => {
     try {
       await fetch(apiRoute, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((response) => {
@@ -38,7 +41,10 @@ export default function CalendarScreen() {
   };
 
   useEffect(() => {
-    getUsers();
+    getUsuario().then((res) => {
+      setUserInfo(res);
+      getUsers(res?.tokenSession);
+    });
   }, []);
 
   useEffect(() => {
@@ -103,6 +109,7 @@ export default function CalendarScreen() {
       />
       <Modal show={showModal} close={handleShowModal}>
         <View>
+          <Text>Cumpleaños:</Text>
           {usersToShow?.length > 0 &&
             usersToShow.map((user, index) => {
               return (
