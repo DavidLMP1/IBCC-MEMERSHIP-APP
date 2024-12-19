@@ -1,14 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, TouchableOpacity, Button } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  StyleSheet,
+} from "react-native";
 import { apiUrl } from "../../enviroment";
-import { Audio } from "expo-av";
 import { Loading } from "../../components/Shared";
+import { useNavigation } from "@react-navigation/native";
+
+// Simulación de datos para las listas
 
 const AudioList = () => {
+  const navigation = useNavigation();
+  const [selectedCategory, setSelectedCategory] = useState("recientes");
+
   const [audios, setAudios] = useState([]);
-  const [sound, setSound] = useState();
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const data = {
+    recientes: audios,
+    textoBiblico: [
+      { date: "2024-12-18", name: "El amor de Dios", passage: "1 Juan 4:8" },
+      { date: "2024-12-17", name: "Paz en Cristo", passage: "Juan 14:27" },
+    ],
+    series: [
+      {
+        date: "2024-12-18",
+        name: "Serie sobre la esperanza",
+        passage: "Romanos 15:13",
+      },
+      {
+        date: "2024-12-17",
+        name: "Serie sobre la salvación",
+        passage: "Efesios 2:8-9",
+      },
+    ],
+  };
 
   const getAudios = async () => {
     try {
@@ -36,32 +65,23 @@ const AudioList = () => {
       alert(error);
     }
   };
+  const renderItem = ({ item }) => {
 
-  // Cargar el archivo de audio
-  const loadAudio = async (url) => {
-    setIsLoading(true);
-    const { sound } = await Audio.Sound.createAsync(
-      { uri: url }, // Aquí pones la URL del audio
-      { shouldPlay: false } // Iniciar sin reproducir
+    return (
+      <TouchableOpacity
+        style={styles.listItem}
+        onPress={() =>
+          navigation.navigate("AudioPlayer", {
+            audioName: item.name,
+            audioUrl: item.url,
+          })
+        }
+      >
+        <Text style={styles.date}>{item.createdAt}</Text>
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.passage}>{item.url}</Text>
+      </TouchableOpacity>
     );
-    setSound(sound);
-    setIsLoading(false);
-  };
-
-  // Reproducir el audio
-  const playAudio = async () => {
-    if (sound) {
-      await sound.playAsync();
-      setIsPlaying(true);
-    }
-  };
-
-  // Detener el audio
-  const stopAudio = async () => {
-    if (sound) {
-      await sound.stopAsync();
-      setIsPlaying(false);
-    }
   };
 
   useEffect(() => {
@@ -69,32 +89,95 @@ const AudioList = () => {
     getAudios();
   }, []);
 
-  if (isLoading) {
-    return <Loading />;
-  } else {
-    return (
+  return (
+    <View style={styles.container}>
+      {/* Barra superior */}
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => setSelectedCategory("recientes")}>
+          <Text
+            style={[
+              styles.headerText,
+              selectedCategory === "recientes" && styles.selected,
+            ]}
+          >
+            Recientes
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelectedCategory("textoBiblico")}>
+          <Text
+            style={[
+              styles.headerText,
+              selectedCategory === "textoBiblico" && styles.selected,
+            ]}
+          >
+            Texto Bíblico
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelectedCategory("series")}>
+          <Text
+            style={[
+              styles.headerText,
+              selectedCategory === "series" && styles.selected,
+            ]}
+          >
+            Series
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Lista de elementos */}
       <FlatList
-        data={audios}
-        keyExtractor={(item) => item._id}
-        renderItem={({ item }) => (
-          <TouchableOpacity>
-            <Text>{item.name}</Text>
-            <Text>
-              {isPlaying ? "Reproduciendo audio..." : "Audio detenido"}
-            </Text>
-            <Button
-              title={"Cargar audio"}
-              onPress={() => loadAudio(item.url)}
-            />
-            <Button
-              title={isPlaying ? "Detener" : "Reproducir"}
-              onPress={isPlaying ? stopAudio : playAudio}
-            />
-          </TouchableOpacity>
-        )}
+        data={data[selectedCategory]}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
       />
-    );
-  }
+    </View>
+  );
 };
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#f5f5f5",
+    paddingTop: 20,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#fff",
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+  },
+  headerText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  selected: {
+    color: "#007BFF", // Color para el texto seleccionado
+  },
+  listItem: {
+    backgroundColor: "#fff",
+    padding: 15,
+    marginVertical: 5,
+    marginHorizontal: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#ddd",
+  },
+  date: {
+    fontSize: 14,
+    color: "#888",
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginVertical: 5,
+  },
+  passage: {
+    fontSize: 12,
+    color: "#aaa",
+  },
+});
 
 export default AudioList;

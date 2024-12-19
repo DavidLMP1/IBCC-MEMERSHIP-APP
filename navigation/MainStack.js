@@ -25,16 +25,16 @@ export default function MainStack() {
           },
         }}
       >
-        <Drawer.Screen name="Dashboard" component={DashboardScreen} />
+        {/* <Drawer.Screen name="Dashboard" component={DashboardScreen} />
         <Drawer.Screen name="Settings" component={SettingsScreen} />
         <Drawer.Screen name="Directory" component={DirectoryScreen} />
         <Drawer.Screen name="Calendar" component={CalendarScreen} />
-        <Drawer.Screen name="Prayer Requests" component={PrayerRequestScreen} />
-        <Drawer.Screen name="About Us" component={AboutUsScreen} />
-        <Drawer.Screen name="Register" component={RegisterScreen} />
+        <Drawer.Screen name="Prayer Requests" component={PrayerRequestScreen} /> */}
+        {/* <Drawer.Screen name="About Us" component={AboutUsScreen} /> */}
+        {/* <Drawer.Screen name="Register" component={RegisterScreen} /> */}
+        <Drawer.Screen name="AudioPlayer" component={AudioPlayer} />
         <Drawer.Screen name="Audio" component={UploadAudio} />
         <Drawer.Screen name="AudioList" component={AudioList} />
-        <Drawer.Screen name="AudioPlayer" component={AudioPlayer} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

@@ -57,10 +57,10 @@ const UploadAudioScreen = () => {
       // Subimos el archivo a un servidor
       const response = await fetch(`${apiUrl}/audio/upload`, {
         method: "POST",
-        body: formData,
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        body: formData,
       });
 
       if (response.ok) {
@@ -76,7 +76,6 @@ const UploadAudioScreen = () => {
   };
 
   function handleInputChange(event) {
-    
     console.log(event);
     // const target = event.target;
     // const value = target.value;
@@ -91,10 +90,17 @@ const UploadAudioScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Button title="Seleccionar archivo de audio" onPress={pickDocument} />
-      <Input placeholder="Fecha" name="Fecha" onChangeText={handleInputChange} />
-      <Input placeholder="Biblia" onChangeText={handleInputChange} />
-      <Input placeholder="Keywords" onChangeText={handleInputChange} />
-      <Input placeholder="Playlist" onChangeText={handleInputChange} />
+      <Input
+        placeholder="Fecha"
+        name="Fecha"
+        onChangeText={handleInputChange}
+      />
+      <Input placeholder="Texto biblico" onChangeText={handleInputChange} />
+      <Input placeholder="Palabras clave" onChangeText={handleInputChange} />
+      <Input
+        placeholder="Nombre de la serie"
+        onChangeText={handleInputChange}
+      />
 
       {file && (
         <>
