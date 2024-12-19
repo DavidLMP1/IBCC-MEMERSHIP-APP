@@ -35,7 +35,8 @@
     "yup": "^1.4.0",
     "expo-document-picker": "~12.0.2",
     "expo-file-system": "~17.0.1",
-    "expo-av": "~14.0.7"
+    "expo-av": "~14.0.7",
+    "react-native-webview": "13.8.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

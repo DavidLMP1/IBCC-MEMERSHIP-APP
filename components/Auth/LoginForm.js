@@ -96,10 +96,10 @@ export function LoginForm() {
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         titleStyle={styles.titleBtn}
-        // onPress={() => {
-        //   navigation.navigate("Stack");
-        // }}
-        onPress={formik.handleSubmit}
+        onPress={() => {
+          navigation.navigate("Stack");
+        }}
+        // onPress={formik.handleSubmit}
         loading={formik.isSubmitting}
       />
     </View>

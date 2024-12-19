@@ -14,6 +14,15 @@ const AudioPlayer = () => {
       { shouldPlay: false } // Iniciar sin reproducir
     );
     setSound(sound);
+     // Configurar el modo de audio en segundo plano
+     await Audio.setAudioModeAsync({
+      allowsRecordingIOS: false,
+      staysActiveInBackground: true, // Mantiene el audio en segundo plano
+      interruptionModeIOS: 2,
+      playsInSilentModeIOS: true, // Permite reproducción aunque el teléfono esté en modo silencioso
+      shouldDuckAndroid: true,
+      interruptionModeAndroid: 2,
+    });
   };
 
   // Reproducir el audio
@@ -52,3 +61,4 @@ const AudioPlayer = () => {
 };
 
 export default AudioPlayer;
+
