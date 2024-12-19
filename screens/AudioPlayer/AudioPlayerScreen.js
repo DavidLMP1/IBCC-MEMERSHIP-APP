@@ -4,7 +4,10 @@ import Slider from "@react-native-community/slider";
 import { Audio } from "expo-av";
 import { Ionicons } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
+import { Image } from "react-native-elements";
+import { COLORS } from "../../constants/index";
 
+const { DARK_BLUE_IBCC, GOLDEN_IBCC } = COLORS;
 const AudioPlayer = () => {
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -14,10 +17,8 @@ const AudioPlayer = () => {
   const route = useRoute();
 
   // Extraemos los parámetros enviados desde la pantalla anterior
-  const {
-    audioName = "Audio Test",
-    audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-  } = route.params || {};
+
+  const { audioName, audioUrl } = route.params || {};
 
   const [formattedDuration, setFormattedDuration] = useState("0:00");
   const [formattedPosition, setFormattedPosition] = useState("0:00");
@@ -29,6 +30,12 @@ const AudioPlayer = () => {
       }
     };
   }, [sound]);
+
+  useEffect(() => {
+    loadAudio();
+    setFormattedDuration("0:00");
+    setFormattedPosition("0:00");
+  }, [audioUrl]);
 
   const formatTime = (milliseconds) => {
     const totalSeconds = Math.floor(milliseconds / 1000); // Convertir de milisegundos a segundos
@@ -76,8 +83,24 @@ const AudioPlayer = () => {
     }
   };
 
+  if (!audioName || !audioUrl) {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={require("../../assets/img/logoIbcc.png")}
+          style={styles.image}
+        />
+        <Text style={styles.title}>Selecciona un audio de la lista para reproducir.</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../../assets/img/logoIbcc.png")}
+        style={styles.image}
+      />
       {/* Título del audio */}
       <Text style={styles.title}>{audioName}</Text>
 
@@ -89,9 +112,9 @@ const AudioPlayer = () => {
           maximumValue={duration}
           value={position}
           onValueChange={skipTo}
-          minimumTrackTintColor="#1DB954"
+          minimumTrackTintColor="#FFF"
           maximumTrackTintColor="#ccc"
-          thumbTintColor="#1DB954"
+          thumbTintColor="#FFF"
         />
         <View style={styles.timeContainer}>
           <Text style={styles.timeText}>{formattedPosition}</Text>
@@ -102,17 +125,17 @@ const AudioPlayer = () => {
       {/* Controles de reproducción */}
       <View style={styles.controlsContainer}>
         <TouchableOpacity>
-          <Ionicons name="play-skip-back" size={40} color="#1DB954" />
+          <Ionicons name="play-skip-back" size={40} color="#FFF" />
         </TouchableOpacity>
         <TouchableOpacity onPress={playPauseAudio}>
           <Ionicons
             name={isPlaying ? "pause-circle" : "play-circle"}
             size={60}
-            color="#1DB954"
+            color="#FFF"
           />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons name="play-skip-forward" size={40} color="#1DB954" />
+          <Ionicons name="play-skip-forward" size={40} color="#FFF" />
         </TouchableOpacity>
       </View>
     </View>
@@ -124,13 +147,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#121212",
+    backgroundColor: "#08151a",
     padding: 20,
   },
   title: {
     fontSize: 18,
     color: "#fff",
     marginBottom: 20,
+    textAlign: "center",
   },
   progressContainer: {
     width: "100%",
@@ -154,6 +178,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     width: "70%",
+  },
+  image: {
+    resizeMode: "contain",
+    width: 200,
+    height: 200,
+    // marginTop: 20,
   },
 });
 

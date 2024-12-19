@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { apiUrl } from "../../enviroment";
-import { Loading } from "../../components/Shared";
+import { Loading } from "../../components/Shared/Loading/index";
 import { useNavigation } from "@react-navigation/native";
 
 // Simulación de datos para las listas
@@ -17,26 +17,12 @@ const AudioList = () => {
   const [selectedCategory, setSelectedCategory] = useState("recientes");
 
   const [audios, setAudios] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const data = {
     recientes: audios,
-    textoBiblico: [
-      { date: "2024-12-18", name: "El amor de Dios", passage: "1 Juan 4:8" },
-      { date: "2024-12-17", name: "Paz en Cristo", passage: "Juan 14:27" },
-    ],
-    series: [
-      {
-        date: "2024-12-18",
-        name: "Serie sobre la esperanza",
-        passage: "Romanos 15:13",
-      },
-      {
-        date: "2024-12-17",
-        name: "Serie sobre la salvación",
-        passage: "Efesios 2:8-9",
-      },
-    ],
+    textoBiblico: [],
+    series: [],
   };
 
   const getAudios = async () => {
@@ -58,15 +44,14 @@ const AudioList = () => {
         })
         .then((json) => {
           setAudios(json);
-          setIsLoading(false);
-        });
+        })
+        .finally(() => setIsLoading(false));
     } catch (error) {
       console.log("error get audio", error);
       alert(error);
     }
   };
   const renderItem = ({ item }) => {
-
     return (
       <TouchableOpacity
         style={styles.listItem}
@@ -77,9 +62,9 @@ const AudioList = () => {
           })
         }
       >
-        <Text style={styles.date}>{item.createdAt}</Text>
+        <Text style={styles.date}>{item.date}</Text>
         <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.passage}>{item.url}</Text>
+        <Text style={styles.passage}>{item.scripture}</Text>
       </TouchableOpacity>
     );
   };
@@ -88,6 +73,10 @@ const AudioList = () => {
     // Obtener lista de audios desde el backend
     getAudios();
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <View style={styles.container}>
@@ -175,8 +164,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   passage: {
-    fontSize: 12,
-    color: "#aaa",
+    fontSize: 14,
+    color: "#888",
   },
 });
 

@@ -12,6 +12,9 @@ import RegisterScreen from "../screens/Register/RegisterScreen";
 import UploadAudio from "../screens/Audio/UploadAudioScreen";
 import AudioList from "../screens/AudioList/AudioListScreen";
 import AudioPlayer from "../screens/AudioPlayer/AudioPlayerScreen";
+import { COLORS } from "../constants/index";
+
+const { DARK_BLUE_IBCC, GOLDEN_IBCC, BLUE_IBCC } = COLORS;
 
 const Drawer = createDrawerNavigator();
 
@@ -20,20 +23,24 @@ export default function MainStack() {
     <NavigationContainer independent={true}>
       <Drawer.Navigator
         screenOptions={{
+          headerTitle: "",
+          headerStyle: {
+            backgroundColor: BLUE_IBCC, // Cambia el color de fondo de la barra superior
+          },
           drawerStyle: {
-            backgroundColor: "#fff",
+            backgroundColor: BLUE_IBCC,
           },
         }}
       >
-        {/* <Drawer.Screen name="Dashboard" component={DashboardScreen} />
+        <Drawer.Screen name="Dashboard" component={DashboardScreen} />
         <Drawer.Screen name="Settings" component={SettingsScreen} />
         <Drawer.Screen name="Directory" component={DirectoryScreen} />
         <Drawer.Screen name="Calendar" component={CalendarScreen} />
-        <Drawer.Screen name="Prayer Requests" component={PrayerRequestScreen} /> */}
-        {/* <Drawer.Screen name="About Us" component={AboutUsScreen} /> */}
+        <Drawer.Screen name="Prayer Requests" component={PrayerRequestScreen} />
+        <Drawer.Screen name="About Us" component={AboutUsScreen} />
         {/* <Drawer.Screen name="Register" component={RegisterScreen} /> */}
         <Drawer.Screen name="AudioPlayer" component={AudioPlayer} />
-        <Drawer.Screen name="Audio" component={UploadAudio} />
+        {/* <Drawer.Screen name="Audio" component={UploadAudio} /> */}
         <Drawer.Screen name="AudioList" component={AudioList} />
       </Drawer.Navigator>
     </NavigationContainer>
