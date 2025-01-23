@@ -34,11 +34,11 @@ export default function PrayerRequestForm() {
         containerStyle={styles.input}
         inputContainerStyle={styles.inputCont}
         inputStyle={styles.inputStyle}
-        onChangeText={(text) => formik.setFieldValue("email", text)}
+        onChangeText={(text) => formik.setFieldValue("name", text)}
         errorMessage={formik.errors.email}
       />
       <Input
-        placeholder="Apellidos"
+        placeholder="Correo electrónico"
         containerStyle={styles.input}
         inputContainerStyle={styles.inputCont}
         inputStyle={styles.inputStyle}
@@ -46,40 +46,23 @@ export default function PrayerRequestForm() {
         errorMessage={formik.errors.email}
       />
       <Input
-        placeholder="Correo electronico"
+        placeholder="Teléfono"
         containerStyle={styles.input}
         inputContainerStyle={styles.inputCont}
         inputStyle={styles.inputStyle}
-        onChangeText={(text) => formik.setFieldValue("email", text)}
+        onChangeText={(text) => formik.setFieldValue("phone", text)}
         errorMessage={formik.errors.email}
       />
       <Input
-        placeholder="Fecha de cumpleaños"
+        placeholder="Petición de oración"
         containerStyle={styles.input}
         inputContainerStyle={styles.inputCont}
         inputStyle={styles.inputStyle}
-        onChangeText={(text) => formik.setFieldValue("email", text)}
+        onChangeText={(text) => formik.setFieldValue("prayer_request", text)}
         errorMessage={formik.errors.email}
-      />
-      <Input
-        placeholder="Telefono"
-        containerStyle={styles.input}
-        inputContainerStyle={styles.inputCont}
-        inputStyle={styles.inputStyle}
-        onChangeText={(text) => formik.setFieldValue("email", text)}
-        errorMessage={formik.errors.email}
-      />
-      <Input
-        placeholder="Contraseña"
-        containerStyle={styles.input}
-        inputContainerStyle={styles.inputCont}
-        inputStyle={styles.inputStyle}
-        secureTextEntry={showPassword ? false : true}
-        onChangeText={(text) => formik.setFieldValue("password", text)}
-        errorMessage={formik.errors.password}
       />
       <Button
-        title="Editar"
+        title="Enviar"
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         titleStyle={styles.titleBtn}

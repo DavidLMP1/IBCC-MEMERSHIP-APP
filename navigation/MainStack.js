@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { StyleSheet } from "react-native";
 import SettingsScreen from "../screens/Settings/SettingsScreen";
 import DashboardScreen from "../screens/Dashboard/DashboardScreen";
+import LoginScreen from "../screens/Login/LoginScreen";
 import DirectoryScreen from "../screens/Directory/DirectoryScreen";
 import CalendarScreen from "../screens/Calendar/CalendarScreen";
 import PrayerRequestScreen from "../screens/Prayers/PrayerRequestScreen";
@@ -12,6 +13,8 @@ import RegisterScreen from "../screens/Register/RegisterScreen";
 import UploadAudio from "../screens/Audio/UploadAudioScreen";
 import AudioList from "../screens/AudioList/AudioListScreen";
 import AudioPlayer from "../screens/AudioPlayer/AudioPlayerScreen";
+import BadgesScreen from "../screens/Badges/BadgesScreen";
+import BlogScreen from "../screens/Blog/BlogScreen";
 import { COLORS } from "../constants/index";
 
 const { DARK_BLUE_IBCC, GOLDEN_IBCC, BLUE_IBCC } = COLORS;
@@ -33,15 +36,20 @@ export default function MainStack() {
         }}
       >
         <Drawer.Screen name="Dashboard" component={DashboardScreen} />
-        <Drawer.Screen name="Settings" component={SettingsScreen} />
-        <Drawer.Screen name="Directory" component={DirectoryScreen} />
-        <Drawer.Screen name="Calendar" component={CalendarScreen} />
-        <Drawer.Screen name="Prayer Requests" component={PrayerRequestScreen} />
-        <Drawer.Screen name="About Us" component={AboutUsScreen} />
+        <Drawer.Screen name="Sermones" component={AudioList} />
+        <Drawer.Screen name="Peticiones de oración" component={PrayerRequestScreen} />
+        <Drawer.Screen name="Reproductor" component={AudioPlayer} />
+        <Drawer.Screen name="Distintivos" component={BadgesScreen} />
+        <Drawer.Screen name="Blog" component={BlogScreen} />
         {/* <Drawer.Screen name="Register" component={RegisterScreen} /> */}
-        <Drawer.Screen name="AudioPlayer" component={AudioPlayer} />
         {/* <Drawer.Screen name="Audio" component={UploadAudio} /> */}
-        <Drawer.Screen name="AudioList" component={AudioList} />
+
+        {/* Membresía */}
+        {/* <Drawer.Screen name="Calendario" component={CalendarScreen} />
+        <Drawer.Screen name="Cuenta" component={SettingsScreen} />
+        <Drawer.Screen name="Directorio" component={DirectoryScreen} />
+        <Drawer.Screen name="Compromiso miembros" component={AboutUsScreen} /> */}
+        {/* Membresía */}
       </Drawer.Navigator>
     </NavigationContainer>
   );
